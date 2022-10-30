@@ -23,23 +23,26 @@ struct  s_ray
     t_vec3      dir;
 };
 
-typedef struct s_camera
+// 2. 추가 (장면 구조체)
+typedef struct s_camera t_camera;
+typedef struct s_canvas t_canvas;
+
+struct  s_camera
 {
-    t_point3    orig;
-    double      viewport_h;
-    double      viewport_w;
-    t_vec3      horizontal;
-    t_vec3      vertical;
-    double      focal_len;
-    t_point3    left_bottom;
+    t_point3    orig;  // 카메라 원점(위치)
+    double      viewport_h; // 뷰포트 세로길이
+    double      viewport_w; // 뷰포트 가로길이
+    t_vec3      horizontal; // 수평길이 벡터
+    t_vec3      vertical; // 수직길이 벡터
+    double      focal_len; // focal length
+    t_point3    left_bottom; // 왼쪽 아래 코너점
 };
 
-typedef struct s_canvas
+struct  s_canvas
 {
-    int     width;
-    int     height;
-    double  aspect_ratio;
+    int     width; //canvas width
+    int     height; //canvas height;
+    double  aspect_ratio; //종횡비
 };
-
 
 #endif

@@ -4,6 +4,6 @@
 # include "stdio.h"
 # include "structures.h"
 
-void    wrtie_color(t_color3 pixel_color);
+void    write_color(t_color3 pixel_color);
 
 #endif

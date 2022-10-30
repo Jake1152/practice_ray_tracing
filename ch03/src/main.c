@@ -5,26 +5,30 @@
 #include "scene.h"
 #include "trace.h"
 
+const int g_width = 400;
+const int g_height = 300;
+
 int	main(void)
 {
     int     i;
     int     j;
-    int     u;
-    int     v;
+    double     u;
+    double     v;
     int     canvas_width;
     int     canvas_height;
     t_color3    pixel_color;
-    t_canvas3   canv;
+    t_canvas    canv;
     t_camera    cam;
     t_ray       ray;
 
-    canv = canvas(400, 300);
+    canv = canvas(g_width, g_height);
     cam = camera(&canv, point3(0, 0, 0));
 
     //캔버스의 가로, 세로 픽셀값
-    canvas_width = 256;
-    canvas_height = 256;
+    canvas_width = g_width;
+    canvas_height = g_height;
 
+    printf("P3\n%d %d\n255\n", canv.width, canv.height);
     // 랜더링
     // P3 는 색상값이 아스키코드라는 뜻, 그리고 다음 줄은 캔버스의 가로, 세로 픽셀 수, 마지막은 사용할 색상값
     j = canvas_height - 1;
@@ -39,9 +43,9 @@ int	main(void)
             ray = ray_primary(&cam, u, v);
             pixel_color = ray_color(&ray);
             write_color(pixel_color);
-        ++i;
+            ++i;
         }
-    --j;
+        --j;
     }
     return (0);
 }
